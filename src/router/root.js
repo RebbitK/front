@@ -2,6 +2,7 @@ import React from "react";
 import { Suspense, lazy } from "react";
 import productsRouter from "./productsRouter";
 import couponRouter from "./couponRouter";
+import memberRouter from "./memberRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 const Loading = <div>Loading....</div>;
@@ -36,6 +37,10 @@ const root = createBrowserRouter([
   path:"coupons",
     element:<Suspense fallback={Loading}><CouponsIndex/></Suspense>,
     children: couponRouter()
+  },
+  {
+    path: "member",
+    children: memberRouter()
   }
 ]);
 export default root;
