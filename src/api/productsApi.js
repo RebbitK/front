@@ -13,12 +13,14 @@ export const postAdd = async (product, userDetails) => {
   return res.data;
 };
 
-export const getList = async (pageParam, searchValue) => {
-  const { page, size } = pageParam;
-  const res = await axios.get(`${host}`, {
-    params: { page: page, size: size, searchValue: searchValue },
+export const getList = async ({ page, size }) => {
+  const response = await axios.get(`${host}`, {
+    params: {
+      page,
+      size,
+    },
   });
-  return res.data;
+  return response.data.data.productList; // productList 필드 반환
 };
 
 export const getOne = async (productId) => {

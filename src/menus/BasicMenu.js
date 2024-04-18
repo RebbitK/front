@@ -15,8 +15,11 @@ const BasicMenu = () => {
             <Link to={"/about"}>About</Link>{" "}
           </li>
           <li className="pr-6 text-2xl">
-          <Link to={'/products/'}>Products</Link>
-        </li>
+            <Link to={'/products/'}>Products</Link>
+          </li>
+          <li className="pr-6 text-2xl">
+            <Link to={'/coupons/'}>Coupons</Link>
+          </li>
         </ul>
       </div>
       <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
