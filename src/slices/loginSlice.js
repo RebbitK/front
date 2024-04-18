@@ -4,11 +4,11 @@ import { loginPost } from "../api/memberApi";
 import { getCookie, setCookie, removeCookie } from "../util/cookieUtil";
 
 const initState = {
-    email:''
+    username:'',
+    password:''
 }
 
 export const loginPostAsync = createAsyncThunk('loginPostAsync', (param) => {
-
   return loginPost(param)
 
 })
@@ -34,9 +34,8 @@ const loginSlice = createSlice({
       console.log("login.....")
       //{email, pw로 구성 }
       const data = action.payload
-      
       //새로운 상태 
-      return {email: data.email}
+      return {username: data.username,password: data.password}
 
     },
     logout: (state, action) => {

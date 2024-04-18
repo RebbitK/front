@@ -11,11 +11,13 @@ const LoginComponent = () => {
   const [loginParam, setLoginParam] = useState({...initState})
 
   const {doLogin, moveToPath} = useCustomLogin()
-  
-  const handleChange = (e) => {
-    loginParam[e.target.name] = e.target.value
 
-    setLoginParam({...loginParam})
+  const handleChange = (e) => {
+    const newLoginParam = { ...loginParam };
+    newLoginParam[e.target.name] = e.target.value;
+
+    // 새로운 객체를 상태로 설정합니다.
+    setLoginParam(newLoginParam);
   }
 
   const handleClickLogin = (e) => {
