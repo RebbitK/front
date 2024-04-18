@@ -24,9 +24,8 @@ export const loginPost = async (data) => {
 
   const res = await axios.post(`${host}/login`,body)
   const token = res.headers['authorization'];
-  console.log(token)
   if(token){
-    localStorage.setItem('jwt-token', token);
+    localStorage.setItem('jwt', token);
   }
   return res.data
 

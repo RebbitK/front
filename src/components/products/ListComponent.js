@@ -19,6 +19,7 @@ const ListComponent = () => {
     setFetching(true);
     getList({ page, size })
       .then((data) => {
+        console.log(page)
         setServerData(data); // productList 배열 할당
         setPageInfo({
           totalPages: data.totalPages, // 페이지네이션 정보 업데이트 필요
