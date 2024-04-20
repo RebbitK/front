@@ -22,6 +22,7 @@ const AddComponent = ({ userDetails }) => {
   const handleClickAdd = async (e) => {
     const files = uploadRef.current.files;
     const formData = new FormData();
+    console.log(files);
     for (let i = 0; i < files.length; i++) {
       formData.append("files", files[i]);
     }

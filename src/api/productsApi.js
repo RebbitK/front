@@ -32,7 +32,7 @@ export const getList = async ({ page, size }) => {
 //     const header = { headers: { "Content-Type": "multipart/form-data" } };
 //     const res = await axios.patch(`${host}/${productId}`, product, {
 //       headers: {
-//         Authorization: `Bearer ${userDetails.accessToken}`,
+//         Authenthorization + getitem.
 //       },
 //     });
 //     return res.data;

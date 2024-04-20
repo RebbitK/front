@@ -19,7 +19,7 @@ const useCustomMove = () => {
   const moveToList = (pageParam) => {
     let queryStr = "";
     if (pageParam) {
-      const pageNum = getNum(pageParam.page, page+1);
+      const pageNum = getNum(pageParam.page, 0);
       const sizeNum = getNum(pageParam.size, 10);
       queryStr = createSearchParams({ page: pageNum, size: sizeNum }).toString();
     } else {

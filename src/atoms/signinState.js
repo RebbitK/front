@@ -3,7 +3,6 @@ import { getCookie } from "../util/cookieUtil";
 
 const initState = {
     username:'',
-    nickname:'',
     social: false,
     accessToken:'',
     refreshToken:''
@@ -14,8 +13,8 @@ const loadMemberCookie = () => { //쿠키에서 체크
     const memberInfo =  getCookie("member")
 
     //닉네임 처리
-    if(memberInfo && memberInfo.nickname) {
-        memberInfo.nickname = decodeURIComponent(memberInfo.nickname)
+    if(memberInfo && memberInfo.username) {
+        memberInfo.username = decodeURIComponent(memberInfo.username)
     }
 
     return memberInfo

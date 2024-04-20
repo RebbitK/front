@@ -15,7 +15,7 @@ const LogoutComponent = () => {
     <div className = "border-2 border-red-200 mt-10 m-2 p-4">
       <div className="flex justify-center">
         <div className="text-4xl m-4 p-4 font-extrabold text-red-500">
-          Logout Component
+          Logout 
         </div>
       </div> 
       <div className="flex justify-center">

@@ -4,8 +4,7 @@ import { loginPost } from "../api/memberApi";
 import { getCookie, setCookie, removeCookie } from "../util/cookieUtil";
 
 const initState = {
-    username:'',
-    password:''
+    username:''
 }
 
 export const loginPostAsync = createAsyncThunk('loginPostAsync', (param) => {
@@ -18,8 +17,8 @@ const loadMemberCookie = () => {  //쿠키에서 로그인 정보 로딩
   const memberInfo =  getCookie("member")
 
   //닉네임 처리 
-  if(memberInfo && memberInfo.nickname) {
-    memberInfo.nickname = decodeURIComponent(memberInfo.nickname)
+  if(memberInfo && memberInfo.username) {
+    memberInfo.username = decodeURIComponent(memberInfo.username)
   }
 
   return memberInfo
@@ -34,8 +33,9 @@ const loginSlice = createSlice({
       console.log("login.....")
       //{email, pw로 구성 }
       const data = action.payload
+      
       //새로운 상태 
-      return {username: data.username,password: data.password}
+      return {username: data.username}
 
     },
     logout: (state, action) => {
@@ -52,10 +52,6 @@ const loginSlice = createSlice({
 
       const payload = action.payload
 
-      //닉네임 한글 처리 
-      if(payload.nickname){
-        payload.nickname = encodeURIComponent(payload.nickname)
-      }
 
       //정상적인 로그인시에만 저장 
       if(!payload.error){

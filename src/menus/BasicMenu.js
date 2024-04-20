@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BasicMenu = () => {
   const loginState = useSelector((state) => state.loginSlice);
-
+  const login = localStorage.getItem('jwt-token');
   return (
     <nav id="navbar" className=" flex  bg-blue-300">
       <div className="w-4/5 bg-gray-500">
@@ -18,12 +18,12 @@ const BasicMenu = () => {
             <Link to={"/products/"}>Products</Link>
           </li>
 
-          {loginState.email ? ( //로그인한 사용자만 출력되는 메뉴
-              <>
-                <li className="pr-6 text-2xl">
-                  <Link to={"/carts/"}>Cart</Link>
-                </li>
-              </>
+          {loginState ? ( //로그인한 사용자만 출력되는 메뉴
+            <>
+              <li className="pr-6 text-2xl">
+                <Link to={"/carts/"}>Cart</Link>
+              </li>
+            </>
           ) : (
               <></>
           )}
@@ -37,7 +37,7 @@ const BasicMenu = () => {
       </div>
 
       <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
-        {!loginState.email ? (
+        {!login ? (
           <div className="text-white text-sm m-1 rounded">
             <Link to={"/member/login"}>Login</Link>
           </div>
