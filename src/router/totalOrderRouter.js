@@ -2,9 +2,9 @@ import { Suspense, lazy } from "react";
 import { Navigate } from "react-router-dom";
 
 const Loading = <div>Loading....</div>
-const TotalOrder = lazy(()=>import("../pages/payments/TotalOrderpage"))
+const TotalOrder = lazy(()=>import("../pages/payments/TotalOrderPage"))
 
-const PaymentRouter = () => {
+const TotalOrderRouter = () => {
 
   return [
     {
@@ -19,4 +19,4 @@ const PaymentRouter = () => {
   ]
 }
 
-export default PaymentRouter;
+export default TotalOrderRouter;

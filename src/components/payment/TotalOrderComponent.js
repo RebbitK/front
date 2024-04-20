@@ -1,92 +1,80 @@
-import {useEffect, useState} from "react"
-import { Navigate, createSearchParams, useNavigate } from "react-router-dom";
-import {totalOrderAdd} from "../../api/totalOrderApi";
-import {getIssued} from "../../api/issuedApi";
-
-const initState = {
-  issuedId: 0,
-  address: ''
-}
-const dropdownStyle = {
-  border: '1px solid #ccc', // 테두리 스타일 지정
-  borderRadius: '4px', // 테두리의 둥근 정도 설정
-  padding: '8px', // 내부 여백 지정
-};
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { totalOrderAdd } from "../../api/totalOrderApi";
+import { getIssued } from "../../api/issuedApi";
+import "./TotalOrderComponent.css"; // CSS 파일 import
 
 const TotalOrderComponent = () => {
   const [coupons, setCoupons] = useState([]);
-  const [loading, setLoading] = useState(true); // 데이터 로딩 상태
-  const [requestParam, setRequestParam] = useState({...initState})
+  const [loading, setLoading] = useState(true);
+  const [requestParam, setRequestParam] = useState({ issuedId: 0, address: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRequestParam((prev) => ({ ...prev, [name]: value }));
+  };
 
-    const request = {...requestParam};
-    request[e.target.name] = e.target.value;
-
-    setRequestParam(request);
-  }
-  const addOrder = () => {
-    totalOrderAdd(requestParam);
-    navigate({ pathname: "/payment" }, { replace: true });
-  }
+  const addOrder = async () => {
+    try {
+      const addedOrder = await totalOrderAdd(requestParam);
+      localStorage.setItem("addOrder", JSON.stringify(addedOrder));
+      navigate({ pathname: "/payment" }, { replace: true });
+    } catch (error) {
+      console.error("Error while adding order:", error);
+    }
+  };
 
   useEffect(() => {
     getIssued()
-    .then(coupons => {
+    .then((coupons) => {
       setCoupons(coupons || []);
-      console.log(coupons)
       setLoading(false);
     })
-    .catch(error => {
+    .catch((error) => {
       setLoading(false);
+      console.error("Error fetching coupons:", error);
     });
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <div>Loading...</div>;
   }
 
   return (
-      <div>
-        <div className="flex justify-center">
-          <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-            <div className="w-full p-3 text-left font-bold">사용가능한 쿠폰</div>
-            <select name="issuedId" onChange={handleChange} style={dropdownStyle} >
-              <option value="0">선택 안함</option>
-              {coupons.data.map((coupon, index) => (
-                  <option key={index} value={coupon.issuedId}>
-                    {coupon.couponInfo || "No Information"}
-                  </option>
-              ))}
-            </select>
-          </div>
+      <div className="total-order-container">
+        <div className="coupon-container">
+          <label htmlFor="issuedId" className="coupon-label">
+            사용 가능한 쿠폰
+          </label>
+          <select name="issuedId" id="issuedId" onChange={handleChange} className="coupon-select">
+            <option value="0">선택 안함</option>
+            {coupons.data.map((coupon, index) => (
+                <option key={index} value={coupon.issuedId}>
+                  {coupon.couponInfo || "No Information"}
+                </option>
+            ))}
+          </select>
         </div>
-        <div className="flex justify-center">
-          <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-            <div className="w-full p-3 text-left font-bold">받으실 주소</div>
-            <input
-                className="w-full p-3 rounded-r border border-solid border-neutral-500 shadow-md"
-                name="address"
-                type={'text'}
-                value={requestParam.address}
-                onChange={handleChange}
-            />
-          </div>
+        <div className="address-container">
+          <label htmlFor="address" className="address-label">
+            받으실 주소
+          </label>
+          <input
+              className="address-input"
+              name="address"
+              type="text"
+              value={requestParam.address}
+              onChange={handleChange}
+          />
         </div>
-        <div className="flex justify-center">
-          <div className="relative mb-4 flex w-full justify-center">
-            <div className="w-100 p-6 flex justify-center font-bold">
-              <button
-                  className="rounded p-4 w-36 bg-blue-500 text-xl  text-white"
-                  onClick={addOrder}
-              >
-                결제하기
-              </button>
-            </div>
-          </div>
+        <div className="payment-button-container">
+          <button className="payment-button" onClick={addOrder}>
+            결제하기
+          </button>
         </div>
       </div>
-  )
-}
+  );
+};
+
 export default TotalOrderComponent;

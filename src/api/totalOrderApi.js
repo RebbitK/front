@@ -11,3 +11,25 @@ export const totalOrderAdd = async (totalOrderRequest) => {
   });
   return res.data;
 };
+
+export const getTotalOrders = async (page) => {
+  const header = localStorage.getItem('jwt');
+  const res = await axios.get(`${API_SERVER_HOST}/totalOrders`,  {
+    headers: {
+      Authorization: header,
+    }, params: {
+      page
+    },
+  });
+  return res.data.data;
+};
+
+export const getTotalOrder = async (totalOrderId) => {
+  const header = localStorage.getItem('jwt');
+  const res = await axios.get(`${API_SERVER_HOST}/totalOrders/${totalOrderId}`,  {
+    headers: {
+      Authorization: header,
+    },
+  });
+  return res.data;
+};

@@ -9,7 +9,6 @@ const ListComponent = () => {
     getCoupons()
     .then(coupons => {
       setCoupons(coupons || []); // API 응답이 없으면 빈 배열로 초기화
-      console.log("Received coupons:", coupons);
       setLoading(false); // 데이터 로딩 완료 후 로딩 상태 변경
     })
     .catch(error => {
