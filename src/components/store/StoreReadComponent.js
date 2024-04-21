@@ -9,7 +9,7 @@ import { addToCart } from "../../api/cartApi";
 
 const host = API_SERVER_HOST;
 
-const ReadComponent = ({ productId }) => {
+const StoreReadComponent = ({ productId }) => {
   const initState = {
     productId: 0,
     productName: "",
@@ -154,6 +154,14 @@ const ReadComponent = ({ productId }) => {
         </div>
       </div>
       <div className="flex justify-end p-4">
+        
+        <button
+          type="button"
+          className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
+          onClick={() => moveToModify(productId)}
+        >
+          Modify
+        </button>
         <button type="button" 
           className="inline-block rounded p-4 m-2 text-xl w-32  text-white bg-green-500"
           onClick={handleClickAddCart}
@@ -165,11 +173,12 @@ const ReadComponent = ({ productId }) => {
           className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           onClick={moveToList}
         >
-          즉시 구매하기 
+          List
         </button>
       </div>
     </div>
   );
 };
 
-export default ReadComponent;
+export default StoreReadComponent;
+

@@ -5,7 +5,7 @@ const LogoutComponent = () => {
   const {doLogout, moveToPath} = useCustomLogin()
 
   const handleClickLogout = () => {
-    doLogout()
+    localStorage.removeItem("jwt");
     alert("로그아웃되었습니다.")
     moveToPath("/")
   }
