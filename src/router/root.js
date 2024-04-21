@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import productsRouter from "./productsRouter";
 import couponRouter from "./couponRouter";
 import memberRouter from "./memberRouter";
+import TotalOrderRouter from "./totalOrderRouter";
 import cartRouter from "./cartRouter";
 import storeRouter from "./storeRouter";
 
@@ -13,8 +14,17 @@ const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const ProductsIndex = lazy(() => import("../pages/products/IndexPage"))
 const CouponsIndex = lazy(()=> import("../pages/coupons/IndexPage"))
+const TotalOrderIndex= lazy(() => import("../pages/payments/TotalOrderPage"))
+const PaymentIndex = lazy(()=> import("../pages/payments/PaymentPage"))
+const PaymentFailIndex = lazy( () => import("../pages/payments/PaymentFailPage") )
+const PaymentSuccessIndex = lazy(()=>import("../pages/payments/PaymentSuccessPage"))
+const PaymentPageIndex = lazy(()=>import("../pages/payments/PaymentsPage"))
+const PaymentDataIndex = lazy(()=>import("../pages/payments/PaymentDataPage"))
+const TotalOrdersIndex = lazy(()=> import("../pages/payments/TotalOrdersPage"))
+const TotalOrderDetailIndex = lazy(()=> import("../pages/payments/TotalOrderDetailPage"))
 const CartsIndex = lazy(()=> import("../pages/cart/CartIndexPage"))
 const StoreIndex = lazy(()=> import("../pages/store/StoreIndexPage"))
+
 
 const root = createBrowserRouter([
   {
@@ -45,6 +55,32 @@ const root = createBrowserRouter([
   {
     path: "member",
     children: memberRouter()
+  },
+  {
+    path:"totalOrder",
+    element:<Suspense fallback={Loading}><TotalOrderIndex/></Suspense>,
+    children: TotalOrderRouter()
+  },{
+  path:"payment",
+    element:<Suspense fallback={Loading}><PaymentIndex/></Suspense>
+  },{
+  path:"payment/fail",
+    element:<Suspense fallback={Loading}><PaymentFailIndex/></Suspense>
+  },{
+    path:"payment/success",
+    element:<Suspense fallback={Loading}><PaymentSuccessIndex/></Suspense>
+  },{
+    path:"payments",
+    element:<Suspense fallback={Loading}><PaymentPageIndex/></Suspense>
+  }, {
+    path: "payments/:paymentId", // 동적 결제 ID를 받아오는 라우트
+    element: <Suspense fallback={Loading}><PaymentDataIndex /></Suspense>
+  },{
+    path:"totalOrders",
+    element:<Suspense fallback={Loading}><TotalOrdersIndex/></Suspense>
+  }, {
+    path: "totalOrders/:totalOrderId", // 동적 결제 ID를 받아오는 라우트
+    element: <Suspense fallback={Loading}><TotalOrderDetailIndex /></Suspense>
   }
 ]);
 export default root;

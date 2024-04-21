@@ -4,13 +4,25 @@ import { API_SERVER_HOST } from "./productsApi"
 
 const host = `${API_SERVER_HOST}/auth`
 
+export const signup = async (signupParam) => {
+    const header = { headers: { "Content-Type": "application/json" } };
+    const body = {
+      username: signupParam.username,
+      password: signupParam.password,
+      role: signupParam.role,
+    };
+  
+    const res = await axios.post(`${host}/signup`, body, header);
+    return res.data;
+  };
 
 export const loginPost = async (data) => {
-  const body = {
-    username : data.username,
-    password: data.pw
 
+  const body = {
+    username: data.username,
+    password: data.pw
   };
+
   const res = await axios.post(`${host}/login`, body);
   const token = res.headers['authorization'].split("Bearer ")[1];
   
@@ -19,7 +31,9 @@ export const loginPost = async (data) => {
   }
 
   return res.data
+
 }
+
 
 export const signupPost = async (data) => {
   const body = {
@@ -42,9 +56,9 @@ export const signupPost = async (data) => {
 //   form.append('username', loginParam.username)
 //   form.append('password', loginParam.password)
 
-//   const res = await axios.post(`${host}/login`, form, header)
 
-//   return res.data
+
+
 
 // }
 // export const signup = async (signupParam) => {
@@ -54,9 +68,20 @@ export const signupPost = async (data) => {
 //       password: signupParam.password,
 //       role: signupParam.role,
 //     };
-  
 
 
+
+export const login = async (loginParam) => {
+  const header = { headers: { "Content-Type": "application/json" } };
+  const body = {
+    username: loginParam.username,
+    password: loginParam.password,
+  };
+
+
+  const res = await axios.post(`${host}/login`, body, header);
+  return res.data;
+};
 
 
 
@@ -65,4 +90,5 @@ export const signupPost = async (data) => {
 
 //로그아웃할 할 때 해줘야 하는 것
 // axios.defaults.headers.common.Authorization = ""
+
 

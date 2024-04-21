@@ -18,6 +18,7 @@ const ListComponent = () => {
     
     getList({ page: page - 1, size: 10 })
       .then((data) => {
+        console.log(page)
         setServerData(data); // productList 배열 할당
         console.log(data)
       })

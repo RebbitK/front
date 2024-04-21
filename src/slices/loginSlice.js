@@ -8,7 +8,6 @@ const initState = {
 }
 
 export const loginPostAsync = createAsyncThunk('loginPostAsync', (param) => {
-
   return loginPost(param)
 
 })

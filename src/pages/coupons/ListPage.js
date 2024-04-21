@@ -1,4 +1,4 @@
-import ListComponent from "../../components/Coupon/ListComponent";
+import ListComponent from "../../components/coupon/ListComponent";
 
 
 const ListPage = () => {

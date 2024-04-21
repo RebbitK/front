@@ -29,7 +29,7 @@ const BasicMenu = () => {
               </li>
             </>
           ) : (
-            <></>
+              <></>
           )}
              {isSeller ? ( //seller만 보이는 메뉴
             <>
@@ -41,10 +41,11 @@ const BasicMenu = () => {
             <></>
           )}
           <li className="pr-6 text-2xl">
-            <Link to={"/products/"}>Products</Link>
+            <Link to={'/coupons/'}>Coupons</Link>
           </li>
           <li className="pr-6 text-2xl">
-            <Link to={"/coupons/"}>Coupons</Link>
+            <Link to={'/totalOrder'}>payments</Link>
+            <Link to={"/products/"}>Products</Link>
           </li>
         </ul>
       </div>
