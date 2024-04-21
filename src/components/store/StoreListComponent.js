@@ -5,7 +5,7 @@ import PageComponent from '../common/PageComponent';
 
 import {useSearchParams, useNavigate, Link} from 'react-router-dom'
 
-const ListComponent = () => {
+const StoreListComponent = () => {
   const [serverData, setServerData] = useState([]);
   const [fetching, setFetching] = useState(false);
   const [searchParam, setSearchParam] = useSearchParams()
@@ -65,7 +65,7 @@ const ListComponent = () => {
   );
 };
 
-export default ListComponent;
+export default StoreListComponent;
 
 
 // setPageInfo({
