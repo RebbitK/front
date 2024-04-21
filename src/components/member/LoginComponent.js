@@ -34,7 +34,7 @@ const LoginComponent = () => {
   return (
     <div className="max-w-xl mx-auto my-10 p-6 border border-gray-300 rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>
-      <div className="mb-4">
+      <div className="mb-4 px-6">
         <input
           className="w-full p-2 border border-gray-300 rounded"
           name="username"
@@ -44,7 +44,7 @@ const LoginComponent = () => {
           placeholder="아이디를 입력해주세요"
         />
       </div>
-      <div className="mb-4 ">
+      <div className="mb-4 px-6 ">
         <input
           className="w-full p-2 border border-gray-300 rounded"
           name="pw"
@@ -55,7 +55,7 @@ const LoginComponent = () => {
         />
       </div>
       
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center  px-6 mb-4">
         <button
           className="w-full py-2  bg-purple-600 text-white rounded hover:bg-purple-700"
           onClick={handleClickLogin}
@@ -63,13 +63,14 @@ const LoginComponent = () => {
           로그인
         </button>
         </div>
-        <div className="flex justify-between items-center mb-4"></div>
+        <div className="flex px-6 justify-between  items-center mb-4">
         <button
-        className="w-full py-2 px-4 bg-gray-200 text-gray-700 rounded hover:bg-purple-700"
+        className="w-full py-2 bg-gray-200 text-gray-700 rounded hover:bg-purple-700"
           onClick={handleClickSignUp}
         >
           회원가입
         </button>
+        </div>
         </div>
     
   );

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { getOne } from "../../api/productsApi";
+import { deleteProduct, getOne } from "../../api/productsApi";
 import { API_SERVER_HOST } from "../../api/productsApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import FetchingModal from "../common/FetchingModal";
 import useCustomCart from "../../hooks/useCustomCart";
 import useCustomLogin from "../../hooks/useCustomLogin";
 import { addToCart } from "../../api/cartApi";
+import { useNavigate } from 'react-router-dom';
 
 const host = API_SERVER_HOST;
 
@@ -21,7 +22,7 @@ const StoreReadComponent = ({ productId }) => {
     storeName: "",
     storeInfo: "",
   };
-
+  const navigate = useNavigate();
   const [product, setProduct] = useState(initState);
   const { moveToList, moveToModify } = useCustomMove();
   const [fetching, setFetching] = useState(false);
@@ -42,6 +43,20 @@ const StoreReadComponent = ({ productId }) => {
       });
   }, [productId]);
 
+  const handleClickModify = () => {
+    navigate(`/store/modify/${productId}`);
+  };
+
+  const handleClickDelete = async () => {
+    try {
+      await deleteProduct(productId);
+      alert("상품이 삭제되었습니다.");
+      navigate('/store/list'); 
+    } catch (error) {
+      console.error("상품 삭제 실패:", error);
+      alert("상품 삭제에 실패했습니다.");
+    }
+  };
   const handleClickAddCart = () => {
     let addedItem = cartItems.filter(
       (item) => item.productId === parseInt(productId)
@@ -72,6 +87,8 @@ const StoreReadComponent = ({ productId }) => {
         });
     }
   };
+
+
   return (
     <div className="border-2 border-sky-200 mt-10 m-2 p-4">
       {fetching ? <FetchingModal /> : <></>}
@@ -158,27 +175,26 @@ const StoreReadComponent = ({ productId }) => {
         <button
           type="button"
           className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
-          onClick={() => moveToModify(productId)}
+          onClick={handleClickModify}
         >
-          Modify
+          수정
         </button>
         <button type="button" 
           className="inline-block rounded p-4 m-2 text-xl w-32  text-white bg-green-500"
-          onClick={handleClickAddCart}
+          onClick={handleClickDelete}
         >
-          장바구니 담기
+          삭제
         </button>
-        <button
+        {/* <button
           type="button"
           className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           onClick={moveToList}
         >
           List
-        </button>
+        </button> */}
       </div>
     </div>
   );
 };
 
 export default StoreReadComponent;
-

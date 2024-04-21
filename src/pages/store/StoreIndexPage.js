@@ -32,8 +32,7 @@ const StoreIndexPage = () => {
         onClick={handleClickAdd}>
           ADD
         </div>
-        
-       
+         
       </div>
       <div className="flex flex-wrap w-full ">
         <Outlet/>

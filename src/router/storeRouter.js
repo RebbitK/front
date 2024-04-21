@@ -5,6 +5,7 @@ const Loading = <div>Loading....</div>;
 const ProductsList = lazy(() => import("../pages/store/ListPage"));
 const ProductRead = lazy(() => import("../pages/store/ReadPage"));
 const ProductAdd = lazy(() => import("../pages/store/AddPage"));
+const ProductModify = lazy(() => import("../pages/store/ModifyPage"));
 
 const storeRouter = () => {
   return [
@@ -23,6 +24,10 @@ const storeRouter = () => {
     {
       path: "read/:productId",
       element: <Suspense fallback={Loading}><ProductRead /></Suspense>
+    },
+    {
+      path: "modify/:productId",
+      element: <Suspense fallback={Loading}><ProductModify /></Suspense>
     }
   ];
 };

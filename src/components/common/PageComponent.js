@@ -28,10 +28,7 @@ const PageComponent = ({ serverData, movePage }) => {
           >
             Prev
           </div>
-
-
-
-
+          <div className="mx-4"></div>
           <div
             className="m-2 p-2 w-16 text-center font-bold text-blue-400"
             

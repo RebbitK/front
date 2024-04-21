@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getList } from '../../api/productsApi';
+import { getList, getStoreList } from '../../api/productsApi';
 import FetchingModal from '../common/FetchingModal';
 import PageComponent from '../common/PageComponent';
 
@@ -16,7 +16,7 @@ const StoreListComponent = () => {
   useEffect(() => {
     setFetching(true);
     
-    getList({ page: page - 1, size: 10 })
+    getStoreList({ page: page - 1, size: 10 })
       .then((data) => {
         setServerData(data); // productList 배열 할당
         console.log(data)
@@ -68,16 +68,3 @@ const StoreListComponent = () => {
 export default StoreListComponent;
 
 
-// setPageInfo({
-//   totalPages: data.totalPages, // 페이지네이션 정보 업데이트 필요
-//   totalElements: data.totalElements,
-//   size: data.size,
-//   number: data.number,
-// });
-
-// const [pageInfo, setPageInfo] = useState({
-//   totalPages: 0,
-//   totalElements: 0,
-//   size: 0,
-//   number: 0,
-// });

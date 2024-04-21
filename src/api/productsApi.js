@@ -19,16 +19,22 @@ export const getList = async ({ page, size }) => {
     return response.data.data.productList; // productList 필드 반환
   };
 
-  // 상품 추가
-  // export const addProduct = async (data, userDetails) => {
-  //   const token = "Bearer " + localStorage.getItem("jwt");
-  //   const res = await axios.post(`${API_SERVER_HOST}/stores/products`, data, {
-  //     headers: {
-  //       Authorization: token,
-  //     },
-  //   });
-  //   return res.data;
-  // };
+
+  // store 
+
+  export const getStoreList = async ({ page, size }) => {
+    const token = "Bearer " + localStorage.getItem("jwt");
+  const res = await axios.get(`${API_SERVER_HOST}/stores/products`, 
+  { params: {
+    page,
+    size,
+  },
+    headers: { Authorization: token },
+  });
+    return res.data.data.productList; 
+  };
+
+
 export const addProduct = async (data, userDetails) => {
   const token = "Bearer " + localStorage.getItem("jwt");
   const body = {
@@ -48,15 +54,32 @@ export const addProduct = async (data, userDetails) => {
 };
 
 // 상품 수정
-export const updateProduct = async (productId, productData) => {
+export const updateProduct = async (productId, data) => {
   const token = "Bearer " + localStorage.getItem("jwt");
-  const res = await axios.patch(`${API_SERVER_HOST}/stores/products/${productId}`, productData, {
+  const res = await axios.patch(`${API_SERVER_HOST}/stores/products/${productId}`, data, {
     headers: {
       Authorization: token,
     },
   });
   return res.data;
 };
+// export const updateProduct = async (productId, data) => {
+//   const token = "Bearer " + localStorage.getItem("jwt");
+//   const body = {
+//     productName : data.productName,
+//     info : data.info,
+//     realPrice : data.realPrice,
+//     price : data.price,
+//     discount : data.discount,
+//     quantity : data.quantity
+//   }
+//   const res = await axios.patch(`${API_SERVER_HOST}/stores/products/${productId}`, body, {
+//     headers: {
+//       Authorization: token,
+//     },
+//   });
+//   return res.data;
+// };
 
 // 상품 삭제
 export const deleteProduct = async (productId) => {

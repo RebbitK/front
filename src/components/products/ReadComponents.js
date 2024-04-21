@@ -6,6 +6,7 @@ import FetchingModal from "../common/FetchingModal";
 import useCustomCart from "../../hooks/useCustomCart";
 import useCustomLogin from "../../hooks/useCustomLogin";
 import { addToCart } from "../../api/cartApi";
+import { useNavigate } from 'react-router-dom';
 
 const host = API_SERVER_HOST;
 
@@ -22,6 +23,7 @@ const ReadComponent = ({ productId }) => {
     storeInfo: "",
   };
 
+  const navigate = useNavigate();
   const [product, setProduct] = useState(initState);
   const { moveToList, moveToModify } = useCustomMove();
   const [fetching, setFetching] = useState(false);
@@ -54,7 +56,9 @@ const ReadComponent = ({ productId }) => {
       addToCart(productId, addedItem.qty + quantity)
         .then((data) => {
           console.log("Add to cart success:", data);
-          // 필요한 경우 추가 작업 수행
+          if (window.confirm('장바구니에 상품이 추가되었습니다. \n장바구니 페이지로 이동하시겠습니까?')) {
+            navigate('/carts/list');
+          }
         })
         .catch((error) => {
           console.error("Add to cart error:", error);
@@ -64,7 +68,10 @@ const ReadComponent = ({ productId }) => {
       addToCart(productId, quantity)
         .then((data) => {
           console.log("Add to cart success:", data);
-          // 필요한 경우 추가 작업 수행
+          //alert("상품이 장바구니에 담겼습니다.");
+          if (window.confirm('장바구니에 상품이 추가되었습니다. \n장바구니 페이지로 이동하시겠습니까?')) {
+            navigate('/carts/list');
+          }
         })
         .catch((error) => {
           console.error("Add to cart error:", error);
@@ -72,6 +79,8 @@ const ReadComponent = ({ productId }) => {
         });
     }
   };
+
+
   return (
     <div className="border-2 border-sky-200 mt-10 m-2 p-4">
       {fetching ? <FetchingModal /> : <></>}

@@ -3,7 +3,7 @@ import axios from "axios";
 export const API_SERVER_HOST = "http://localhost:8080";
 
 export const totalOrderAdd = async (totalOrderRequest) => {
-  const header = localStorage.getItem('jwt');
+  const header = "Bearer " +localStorage.getItem('jwt');
   const res = await axios.post(`${API_SERVER_HOST}/totalOrders`, totalOrderRequest, {
     headers: {
       Authorization: header,
@@ -13,7 +13,7 @@ export const totalOrderAdd = async (totalOrderRequest) => {
 };
 
 export const getTotalOrders = async (page) => {
-  const header = localStorage.getItem('jwt');
+  const header ="Bearer " + localStorage.getItem('jwt');
   const res = await axios.get(`${API_SERVER_HOST}/totalOrders`,  {
     headers: {
       Authorization: header,
@@ -25,7 +25,7 @@ export const getTotalOrders = async (page) => {
 };
 
 export const getTotalOrder = async (totalOrderId) => {
-  const header = localStorage.getItem('jwt');
+  const header ="Bearer " + localStorage.getItem('jwt');
   const res = await axios.get(`${API_SERVER_HOST}/totalOrders/${totalOrderId}`,  {
     headers: {
       Authorization: header,
