@@ -46,7 +46,7 @@ const BasicMenu = () => {
       <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
       {isLoggedIn ? ( 
               <li className="pr-6 text-3xl mt-10">
-                <Link to={"/carts/"}>Mypage</Link>
+                <Link to={"/member/mypage"}>Mypage</Link>
               </li>
           ) : (
             <></>

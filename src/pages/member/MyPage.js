@@ -1,5 +1,7 @@
 
 import MyPageComponent from "../../components/member/MyPageComponent";
+import PaymentListPageComponent from "../../components/payment/PaymentListComponent";
+import TotalOrderListComponent from "../../components/payment/TotalOrderListComponent";
 import BasicMenu from "../../menus/BasicMenu";
 
 
@@ -9,6 +11,12 @@ const MyPage = () => {
       <BasicMenu/>
       <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
         <MyPageComponent/>
+      </div> 
+      <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
+        <TotalOrderListComponent/>
+      </div>  
+      <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
+        <PaymentListPageComponent/>
       </div>  
     </div>
    );

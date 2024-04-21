@@ -11,7 +11,6 @@ import storeRouter from "./storeRouter";
 const { createBrowserRouter } = require("react-router-dom");
 const Loading = <div>Loading....</div>;
 const Main = lazy(() => import("../pages/MainPage"));
-const About = lazy(() => import("../pages/AboutPage"));
 const ProductsIndex = lazy(() => import("../pages/products/IndexPage"))
 const CouponsIndex = lazy(()=> import("../pages/coupons/IndexPage"))
 const TotalOrderIndex= lazy(() => import("../pages/payments/TotalOrderPage"))

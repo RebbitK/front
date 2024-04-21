@@ -95,15 +95,15 @@ const CartItemComponent = () => {
             ))}
           </ul>
           <div className="mt-8 flex justify-end">
-            <div className="text-lg font-bold">
+            <div className="text-xlg font-bold ">
               Total Price: {totalPrice.toLocaleString()} 원
             </div>
           </div>
-          <div className="mt-4 flex justify-end">
-            <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
-              결제하기
+          {/* <div className="mt-10 flex justify-end ">
+            <button className="px-4 py-2 bg-orange-400 text-white rounded-md">
+              주문하기
             </button>
-          </div>
+          </div> */}
         </>
       )}
     </div>

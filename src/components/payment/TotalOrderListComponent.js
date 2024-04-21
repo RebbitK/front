@@ -3,7 +3,7 @@ import { getTotalOrders } from '../../api/totalOrderApi';
 import { useNavigate } from "react-router-dom";
 import "./TotalOrderList.css";
 
-function TotalOrdersComponent() {
+function TotalOrderListComponent() {
   const [totalOrders, setTotalOrders] = useState([]); // 주문 목록을 저장할 상태
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호 상태
   const [totalPages, setTotalPages] = useState(0); // 전체 페이지 수 상태
@@ -108,4 +108,4 @@ function TotalOrdersComponent() {
   );
 }
 
-export default TotalOrdersComponent;
+export default TotalOrderListComponent;
