@@ -14,8 +14,7 @@ const AddComponent = () => {
     try {
       const response = await addProduct({ productName, info, realPrice, price, discount, quantity });
       console.log(response);
-      // 추가 작업 수행 (예: 목록 페이지로 이동 등)
-      // setProduct({ ...initState }); // 입력 값 초기화
+      alert('상품이 성공적으로 등록되었습니다.');
     } catch (error) {
       console.error(error);
     }

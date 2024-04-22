@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtAxios from "../util/jwtUtil";
 import { getCookie } from "../util/cookieUtil";
 
-export const API_SERVER_HOST = "http://localhost:8080";
+const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST
 
 
 export const postChangeCart = async (productId, qty) => {

@@ -15,7 +15,6 @@ const ListComponent = () => {
 
   useEffect(() => {
     setFetching(true);
-    
     getList({ page: page - 1, size: 10 })
       .then((data) => {
         console.log(page)

@@ -6,8 +6,8 @@ const IndexPage = () => {
 
   return (
       <BasicLayout>
-        <div className="text-black font-extrabold -mt-10">
-          Coupons Menus
+        <div className="text-black font-extrabold -mt-10 mt-4">
+          발급 가능한 쿠폰
         </div>
         <div className="w-full flex m-2 p-2 ">
 

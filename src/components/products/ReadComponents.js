@@ -35,6 +35,7 @@ const ReadComponent = ({ productId }) => {
     setFetching(true);
     getOne(productId)
       .then((data) => {
+        console.log(data);
         setProduct(data.data);
         setFetching(false);
       })

@@ -1,4 +1,5 @@
 
+import MyCouponListComponent from "../../components/member/MyCouponListComponent";
 import MyPageComponent from "../../components/member/MyPageComponent";
 import PaymentListPageComponent from "../../components/payment/PaymentListComponent";
 import TotalOrderListComponent from "../../components/payment/TotalOrderListComponent";
@@ -12,6 +13,9 @@ const MyPage = () => {
       <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
         <MyPageComponent/>
       </div> 
+      <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
+        <MyCouponListComponent/>
+      </div>  
       <div className="w-full flex flex-wrap  h-full justify-center  items-center border-2">
         <TotalOrderListComponent/>
       </div>  

@@ -21,7 +21,11 @@ const BasicMenu = () => {
               <li className="pr-6 text-3xl mt-10">
                 <Link to={"/carts/"}>Cart</Link>
               </li>
+              <li className="pr-6 text-3xl mt-10">
+            <Link to={"/coupons/"}>Coupons</Link>
+          </li>
             </>
+            
           ) : (
             <></>
           )}
@@ -34,12 +38,10 @@ const BasicMenu = () => {
           ) : (
             <></>
           )}
-          <li className="pr-6 text-3xl mt-10">
-            <Link to={"/coupons/"}>Coupons</Link>
-          </li>
-          <li className="pr-6 text-3xl mt-10">
+         
+          {/* <li className="pr-6 text-3xl mt-10">
             <Link to={"/totalOrder"}>Payments</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 

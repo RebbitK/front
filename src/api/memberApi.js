@@ -1,6 +1,6 @@
 import axios from "axios"
-import { API_SERVER_HOST } from "./productsApi"
 
+export const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
 
 const host = `${API_SERVER_HOST}/auth`
 

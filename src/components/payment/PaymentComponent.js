@@ -1,13 +1,16 @@
 import { useEffect, useRef } from "react";
 import { loadPaymentWidget } from "@tosspayments/payment-widget-sdk";
 
+
 export default function App() {
   const paymentWidgetRef = useRef(null);
   const totalOrder = JSON.parse(localStorage.getItem("addOrder"))
+  const TOSS_ID = process.env.REACT_APP_TOSS_ID;
+  const TOSS_PW = process.env.REACT_APP_TOSS_PW;
 
   useEffect(() => {
     const initializePaymentWidget = async () => {
-      const paymentWidget = await loadPaymentWidget("test_ck_mBZ1gQ4YVXWbZvbqwWG13l2KPoqN", "a5Sm41mlu9n1WQofyLXeF");
+      const paymentWidget = await loadPaymentWidget(TOSS_ID, TOSS_PW);
       paymentWidgetRef.current = paymentWidget;
       paymentWidget.renderPaymentMethods("#payment-widget", totalOrder.data["priceAmount"]);
     };
